@@ -1,0 +1,260 @@
+@keyframes flipOutYF {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  to {
+    transform: perspective(400px) translate3d(-50px, 0, 0) rotateY(-5deg);
+    opacity: 0;
+  }
+}
+@keyframes flipOutYB {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+
+  to {
+    transform: perspective(400px) translate3d(50px, 0, 0) rotateY(5deg);
+    opacity: 0;
+  }
+}
+
+@keyframes flipInYF {
+  from {
+    transform: perspective(400px) translate3d(50px, 0, 0) rotateY(5deg);
+    opacity: 0;
+  }
+
+  30% {
+    transform: perspective(400px) translate3d(50px, 0, 0) rotateY(5deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+@keyframes flipInYB {
+  from {
+    transform: perspective(400px) translate3d(-50px, 0, 0) rotateY(-5deg);
+    opacity: 0;
+  }
+
+  30% {
+    transform: perspective(400px) translate3d(-50px, 0, 0) rotateY(-5deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+.flipOutYF,
+.flipOutYB,
+.flipInYF,
+.flipInYB {
+  animation-duration: 400ms;
+  backface-visibility: visible !important;
+}
+.flipOutYF {
+  animation-name: flipOutYF;
+}
+.flipOutYB {
+  animation-name: flipOutYB;
+}
+.flipInYF {
+  animation-name: flipInYF;
+}
+.flipInYB {
+  animation-name: flipInYB;
+}
+
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  color: #7d7c7e;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #323043;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #55569b;
+  text-decoration: none;
+
+  .icon {
+    font-size: 10px;
+    margin: 4px 0 0 5px;
+    vertical-align: text-top;
+  }
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.wikibox {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  opacity: 0;
+  cursor: pointer;
+
+  &_container {
+    &__prev_btn {
+      border-radius: 100%;
+      color: #55569b;
+      outline: none;
+      background: transparent;
+      border: 1px solid #ddd;
+      width: 45px;
+      height: 45px;
+      margin-bottom: 30px;
+      font-size: 18px;
+      visibility: hidden;
+    }
+  }
+
+  &.active-box,
+  &.animate {
+    display: block;
+  }
+
+  &.active-box {
+    opacity: 1;
+  }
+
+  &_block {
+    padding: 24px 23px;
+  }
+
+  &_list {
+    width: 450px;
+    position: relative;
+  }
+
+  &__main {
+    text-align: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -55px;
+
+    &_img {
+      max-height: 190px;
+      max-width: 200px;
+      background: #fff;
+      border-radius: 6px;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+
+    &_media {
+      font-size: 20px;
+
+      & + & {
+        margin-left: 15px;
+      }
+
+      &_list {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &__description {
+    line-height: 1.7;
+
+    p {
+      margin: 0;
+    }
+  }
+
+  &__main + &__description {
+    padding-top: 0;
+  }
+
+  &__info {
+    border-top: 1px solid #ddd;
+
+    &-item {
+      line-height: 1.6;
+
+      & + & {
+        margin-top: 10px;
+      }
+
+      &-label {
+        font-weight: 600;
+        color: #464549;
+      }
+    }
+  }
+
+  &__show_all {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #e5e5ef;
+    padding: 15px 24px;
+    font-weight: bold;
+    color: #464549;
+    text-align: center;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 10px 10px;
+    position: relative;
+    z-index: 1;
+
+    .icon {
+      color: #55569b;
+      margin: 5px 0 -20px;
+      font-size: 12px;
+    }
+
+    &_btn {
+      position: absolute;
+      width: 85px;
+      height: 41px;
+      border-radius: 100%;
+      background: #e5e5ef;
+      z-index: -1;
+      bottom: -22px;
+    }
+  }
+}
